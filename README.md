@@ -1,5 +1,7 @@
 # Angular SPA FrpFront - Clariteia 
 
+# [VIEW LIVE](https://clariteia-angular-primeng.vercel.app/project/list)
+
 ## 🚫 Client to be avoided
 read more [HERE](https://www.paidlancer.dev/avoid-list)
 
