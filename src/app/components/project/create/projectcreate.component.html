@@ -1,0 +1,469 @@
+<div class="">
+  <div class="">
+    <div class="">
+      <div style="height: 100%">
+
+        <!-- Upload documents -->
+        <div class="hidden overflow-auto" [ngClass]="{ 'flex flex-grow-1': activeTab === 'upload' }">
+
+          <div class="layout-sidebar-timeline">
+            <div class="timeline-menu">
+              <h3>Progress</h3>
+              <p-timeline [value]="events" [class.red]=true>
+                <ng-template pTemplate="marker" let-event>
+                  <span class="custom-marker active">
+                    @if (event.status === "Upload documents") {
+                    <i class="pi pi-circle-fill"></i>
+                    } @else {
+                    <i class="pi pi-circle"></i>
+                    }
+                  </span>
+                </ng-template>
+                <ng-template pTemplate="content" let-event>
+                  <p>{{ event.status }}</p>
+                </ng-template>
+              </p-timeline>
+            </div>
+          </div>
+
+          <div class="create-project col-12">
+            <form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+
+              <div class="heading flex justify-content-between">
+                <span class="text-900 text-xl font-bold mb-4 block">Upload documents</span>
+                @if (displayedFiles.length > 0) {
+                <p-fileUpload mode="basic" [multiple]="true" chooseIcon="pi pi-upload" chooseLabel="Upload more"
+                  name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [auto]="true"
+                  (onUpload)="onUpload($event)">
+                </p-fileUpload>
+                }
+              </div>
+
+              <div class="grid formgrid p-fluid">
+                <div class="field col-12">
+                  <label for="projectName" class="font-medium text-900">Project name</label>
+                  <input id="projectName" type="text" pInputText formControlName="projectName"
+                    placeholder="Information System Risk Assessment">
+                  <div class="error-msg">
+                    @if (newProjectForm.get('projectName')?.hasError('required') &&
+                    newProjectForm.get('projectName')?.touched) {
+                    <small class="p-error">Project name is required</small>
+                    }
+                    @if (newProjectForm.get('projectName')?.hasError('minlength') &&
+                    newProjectForm.get('projectName')?.touched) {
+                    <small class="p-error">Project name must be at least 3 characters long.</small>
+                    }
+                    @if (newProjectForm.get('projectName')?.hasError('maxlength') &&
+                    newProjectForm.get('projectName')?.touched) {
+                    <small class="p-error">Project name cannot exceed 125 characters.</small>
+                    }
+                    @if (newProjectForm.get('projectName')?.hasError('invalidCharacters') &&
+                    newProjectForm.get('projectName')?.touched) {
+                    <small class="p-error">The project name must not contain special characters.</small>
+                    }
+                    @if (newProjectForm.get('projectName')?.hasError('duplicateProjectName') &&
+                    newProjectForm.get('projectName')?.touched) {
+                    <small class="p-error">The entered name is already in use for another project.</small>
+                    }
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  @if (displayedFiles.length <= 0) { <label for="documents" class="font-medium text-900">
+                    Documents</label>
+                    <div class="file-upload-area">
+                      <img src="../../../../assets/images/file-upload.png" alt="">
+                      <h3>Drag and drop documents here</h3>
+                      <h4>OR</h4>
+                      <p-toast></p-toast>
+                      <p-fileUpload mode="basic" [multiple]="true" chooseIcon="pi pi-search" chooseLabel="Browse"
+                        name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [auto]="true"
+                        (onUpload)="onUpload($event)">
+                      </p-fileUpload>
+                      <p>Upload everything you might want to use to create proposals, for example: Prior RFPs Prior RFP
+                        responses
+                        Presentations,
+                        certificates, catalogues, research and papers, articles, success cases, webpages Any other
+                        relevant
+                        information</p>
+                    </div>
+
+                    <div class="file-formats col-12">
+                      <p>Supported formats: DOC, PDF, XLS</p>
+                      <p>Maximum size: 20MB</p>
+                    </div>
+                    } @else {
+                    <label for="documents" class="font-medium text-900">Documents</label>
+                    <p-table [value]="displayedFiles" sortField="file.name" sortMode="single" [rows]="10"
+                      responsiveLayout="scroll">
+                      <ng-template pTemplate="header">
+                        <tr>
+                          <th colspan="2">Name</th>
+                          <th width="15%"></th>
+                          <th colspan="2" width="15%">Size</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-file let-rowIndex="rowIndex">
+                        @if (file.size > maxFileSize) {
+                        <tr class="error">
+                          <td>
+                            <i class="pi pi-exclamation-triangle"></i>
+                            {{file.name}}
+                          <td colspan="3">
+                            Unable to upload file because <span> the file size is too large.</span> Allowed maximum file
+                            size: 20
+                            MB
+                          </td>
+                          <td>
+                            <i class="pi pi-times" (click)="removeFile(file)"></i>
+                          </td>
+                        </tr>
+                        } @else if (!formatAllowed(file)) {
+                        <tr class="error">
+                          <td>
+                            <i class="pi pi-exclamation-triangle"></i>
+                            {{file.name}}
+                          <td colspan="3">
+                            Unable to upload file.<span>The file format is not supported.</span> Allowed types: pdf,
+                            docx, xlsx
+                          </td>
+                          <td>
+                            <i class="pi pi-times" (click)="removeFile(file)"></i>
+                          </td>
+                        </tr>
+                        } @else {
+                        <tr>
+                          <td colspan="2">
+                            {{file.name}}
+                          </td>
+                          <td>
+                            <i class="pi pi-check-circle" style="color: green"></i>
+                          </td>
+                          <td>
+                            {{file.size}} KB
+                          </td>
+                          <td class="remove">
+                            <i class="pi pi-times" (click)="removeFile(file)"></i>
+                          </td>
+                        </tr>
+                        }
+
+                      </ng-template>
+                    </p-table>
+                    }
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="actions flex justify-content-end">
+                  <a routerLink="/project/list">Cancel</a>
+                  <p-button routerLink="/project/list" label="Back" icon="pi pi-check" [outlined]="true"></p-button>
+                  <p-button type="submit" label="Next" icon="pi pi-check" iconPos="right"
+                    (click)="clickNext('team')"></p-button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Select team -->
+        <div class="hidden overflow-auto h-full" [ngClass]="{ 'flex flex-grow-1': activeTab === 'team' }">
+
+          <div class="layout-sidebar-timeline">
+            <div class="timeline-menu">
+              <h3>Progress</h3>
+              <p-timeline [value]="events" [class.red]=true>
+                <ng-template pTemplate="marker" let-event>
+                  <span class="custom-marker active">
+                    @if (event.status === "Select team") {
+                    <i class="pi pi-circle-fill"></i>
+                    } @else {
+                    <i class="pi pi-circle"></i>
+                    }
+                  </span>
+                </ng-template>
+                <ng-template pTemplate="content" let-event>
+                  <p>{{ event.status }}</p>
+                </ng-template>
+              </p-timeline>
+            </div>
+          </div>
+
+          <div class="select-team col-12">
+
+            <div class="heading flex justify-content-between">
+              <span class="text-900 text-xl font-bold mb-4 block">Select Team</span>
+              <div class="dialog">
+                <p-button (click)="showDialog()" icon="pi pi-plus" iconPos="right" label="Add collaborators"></p-button>
+              </div>
+            </div>
+
+            <form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+
+              <p-dialog header="Add collaborators to this project" [(visible)]="dialogIsVisible" [modal]="true"
+                [style]="{ width: '40vw' }">
+                <div class="dialog-content">
+                  <span class="search p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText placeholder="Search" />
+                  </span>
+                  <p-table [value]="availableTeamMembers" [(selection)]="teamMembersSelection" dataKey="id" responsiveLayout="scroll"
+                    [tableStyle]="{'min-width': '40rem'}">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th style="width: 4rem">
+                          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-teamMember>
+                      <tr>
+                        <td>
+                          <p-tableCheckbox [value]="teamMember"></p-tableCheckbox>
+                        </td>
+                        <td>{{teamMember.name}}</td>
+                        <td>{{teamMember.title}}</td>
+                        <td>{{teamMember.type}}</td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+                  <p class="new-collaborator p-2">+ Create a new collaborator</p>
+                  <div class="flex flex-column md:flex-row">
+
+                    <form [formGroup]="newTeamMemberForm" class="flex  gap-3">
+                      <p-inputGroup>
+                        <input pInputText formControlName="teamMemberName" placeholder="Name" />
+                      </p-inputGroup>
+
+                      <p-inputGroup>
+                        <input type="text" pInputText formControlName="teamMemberTitle" placeholder="Title" />
+                      </p-inputGroup>
+
+                      <p-inputGroup>
+                        <input type="text" pInputText formControlName="teamMemberType" placeholder="Type" />
+                      </p-inputGroup>
+                      <i class="pi pi-plus-circle active add" style="font-size: 2.5rem" (click)="addAvailableTeamMember()"></i>
+                    </form>
+
+                  </div>
+                  <div class="flex pt-5 justify-content-end">
+                    <p-button label="Done" icon="pi pi-check" iconPos="right" (click)="addTeamMembers()"></p-button>
+                  </div>
+                </div>
+
+              </p-dialog>
+
+
+
+              <div class="grid formgrid p-fluid">
+
+                <div class="col-12">
+                  <p-table [value]="teamMembersAdded" sortField="teamMember.name" sortMode="single" [rows]="10"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th width=40%>Name<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20%>Title<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20%>User rights<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20% colspan="2">Type<i class="pi pi-angle-down" field="name"></i></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-teamMember let-rowIndex="rowIndex">
+                      <tr>
+                        <td>
+                          {{teamMember.name}}
+                        </td>
+                        <td>
+                          {{teamMember.title}}
+                        </td>
+                        <td>
+                          <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"
+                            [showClear]="true" placeholder="Viewer" appendTo="body"></p-dropdown>
+                        </td>
+                        <td>
+                          {{teamMember.type}}
+                        </td>
+                        <td class="remove">
+                          <i class="pi pi-times" (click)="removeTeamMember(teamMember)"></i>
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+                  @if (teamMembersAdded.length <= 0) { <p class="flex p-4 justify-content-center">There are no
+                    collaborators selected yet</p>
+                    }
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="actions flex justify-content-end">
+                  <a routerLink="/project/list">Save and Exit</a>
+                  <p-button label="Back" icon="pi pi-check" [outlined]="true" (click)="clickBack('upload')"></p-button>
+                  <p-button type="submit" label="Next" icon="pi pi-check" iconPos="right"
+                    (click)="clickNext('review')"></p-button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Review information -->
+        <div class="hidden overflow-auto h-full" [ngClass]="{ 'flex flex-grow-1': activeTab === 'review' }">
+
+          <div class="layout-sidebar-timeline">
+            <div class="timeline-menu">
+              <h3>Progress</h3>
+              <p-timeline [value]="events" [class.red]=true>
+                <ng-template pTemplate="marker" let-event>
+                  <span class="custom-marker active">
+                    @if (event.status === "Review information") {
+                    <i class="pi pi-circle-fill"></i>
+                    } @else {
+                    <i class="pi pi-circle"></i>
+                    }
+                  </span>
+                </ng-template>
+                <ng-template pTemplate="content" let-event>
+                  <p>{{ event.status }}</p>
+                </ng-template>
+              </p-timeline>
+            </div>
+          </div>
+
+          <div class="review col-12">
+            <div class="heading flex justify-content-between">
+              <span class="text-900 text-xl font-bold mb-4 block">Review information</span>
+            </div>
+
+            <div class="formgrid p-fluid">
+              <p-tabView styleClass="tabview-custom">
+                <p-tabPanel>
+
+                  <ng-template pTemplate="header">
+                    <i class="pi pi-file tab-icon"></i>
+                    <span>Documents</span>
+                  </ng-template>
+                  <p-table [value]="displayedFiles" sortField="file.name" sortMode="single" [rows]="10"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th colspan="2">Name</th>
+                        <th width="15%"></th>
+                        <th colspan="2" width="15%">Size</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-file let-rowIndex="rowIndex">
+                      @if (file.size > maxFileSize) {
+                      <tr class="error">
+                        <td>
+                          <i class="pi pi-exclamation-triangle"></i>
+                          {{file.name}}
+                        <td colspan="3">
+                          Unable to upload file because <span> the file size is too large.</span> Allowed maximum file
+                          size: 20
+                          MB
+                        </td>
+                        <td>
+                          <i class="pi pi-times" (click)="removeFile(file)"></i>
+                        </td>
+                      </tr>
+                      } @else if (!formatAllowed(file)) {
+                      <tr class="error">
+                        <td>
+                          <i class="pi pi-exclamation-triangle"></i>
+                          {{file.name}}
+                        <td colspan="3">
+                          Unable to upload file.<span>The file format is not supported.</span> Allowed types: pdf,
+                          docx, xlsx
+                        </td>
+                        <td>
+                          <i class="pi pi-times" (click)="removeFile(file)"></i>
+                        </td>
+                      </tr>
+                      } @else {
+                      <tr>
+                        <td colspan="2">
+                          {{file.name}}
+                        </td>
+                        <td>
+                          <i class="pi pi-check-circle" style="color: green"></i>
+                        </td>
+                        <td>
+                          {{file.size}} KB
+                        </td>
+                        <td>
+                          <i class="pi pi-times" (click)="removeFile(file)"></i>
+                        </td>
+                      </tr>
+                      }
+
+                    </ng-template>
+                  </p-table>
+
+                </p-tabPanel>
+
+                <p-tabPanel>
+                  <ng-template pTemplate="header">
+                    <i class="pi pi-users tab-icon"></i>
+                    <span>Team</span>
+                  </ng-template>
+
+                  <p-table [value]="teamMembersAdded" sortField="teamMember.name" sortMode="single" [rows]="10"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th width=40%>Name<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20%>Title<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20%>User rights<i class="pi pi-angle-down" field="name"></i></th>
+                        <th width=20% colspan="2">Type<i class="pi pi-angle-down" field="name"></i></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-teamMember let-rowIndex="rowIndex">
+                      <tr>
+                        <td>
+                          {{teamMember.name}}
+                        </td>
+                        <td>
+                          {{teamMember.title}}
+                        </td>
+                        <td>
+                          <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"
+                            [showClear]="true" placeholder="Viewer" appendTo="body"></p-dropdown>
+                        </td>
+                        <td>
+                          {{teamMember.type}}
+                        </td>
+                        <td>
+                          <i class="pi pi-times" (click)="removeTeamMember(teamMember)"></i>
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+
+                </p-tabPanel>
+              </p-tabView>
+            </div>
+
+            <div class="col-12">
+              <div class="actions flex justify-content-end">
+                <a routerLink="/project/list">Save and Exit</a>
+                <p-button label="Back" icon="pi pi-check" [outlined]="true" (click)="clickBack('team')"></p-button>
+                <p-button type="submit" label="Next" icon="pi pi-check" iconPos="right"
+                  (click)="clickNext('review')"></p-button>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

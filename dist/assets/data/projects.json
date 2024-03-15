@@ -1,0 +1,304 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Smart City Connect",
+      "dueDate": "2019-01-01",
+      "lastModified": "2018-12-01",
+      "client" : {
+        "id": 1,
+        "name": "Client 1"
+      },
+      "role": "Editor",
+      "status": "Analysis",
+      "stage" : {
+        "name": "Under Analysis"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Data Insight Hub",
+      "dueDate": "2019-02-15",
+      "lastModified": "2019-01-20",
+      "client" : {
+        "id": 2,
+        "name": "Client 2"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Active"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Eco Green Solutions",
+      "dueDate": "2019-03-10",
+      "lastModified": "2019-02-25",
+      "client" : {
+        "id": 3,
+        "name": "Client 3"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Active"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Quantum Innovate",
+      "dueDate": "2019-04-22",
+      "lastModified": "2019-03-30",
+      "client" : {
+        "id": 4,
+        "name": "Client 4"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Active"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Health Tech Navigator",
+      "dueDate": "2019-05-15",
+      "lastModified": "2019-04-20",
+      "client" : {
+        "id": 5,
+        "name": "Client 5"
+      },
+      "role": "Owner",
+      "status": "Won",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Secure Networks",
+      "dueDate": "2019-06-05",
+      "lastModified": "2019-05-10",
+      "client" : {
+        "id": 6,
+        "name": "Client 6"
+      },
+      "role": "Owner",
+      "status": "Won",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Edu Tech Pioneer",
+      "dueDate": "2019-07-18",
+      "lastModified": "2019-06-25",
+      "client" : {
+        "id": 7,
+        "name": "Client 7"
+      },
+      "role": "Owner",
+      "status": "Last",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 8,
+      "name": "FinTech Frontier",
+      "dueDate": "2019-08-10",
+      "lastModified": "2019-07-15",
+      "client" : {
+        "id": 8,
+        "name": "Client 8"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Robo Assist X",
+      "dueDate": "2019-09-22",
+      "lastModified": "2019-08-30",
+      "client" : {
+        "id": 9,
+        "name": "Client 9"
+      },
+      "role": "Owner",
+      "status": "Inactive",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Virtual Tour Explorer",
+      "dueDate": "2019-10-15",
+      "lastModified": "2019-09-20",
+      "client" : {
+        "id": 10,
+        "name": "Client 10"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Agile Project Mastery",
+      "dueDate": "2019-11-05",
+      "lastModified": "2019-10-10",
+      "client" : {
+        "id": 11,
+        "name": "Client 11"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Aero Tech Skyline",
+      "dueDate": "2019-12-18",
+      "lastModified": "2019-11-25",
+      "client" : {
+        "id": 12,
+        "name": "Client 12"
+      },
+      "role": "Owner",
+      "status": "Inactive",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Green Energy Harbor",
+      "dueDate": "2020-01-10",
+      "lastModified": "2019-12-15",
+      "client" : {
+        "id": 13,
+        "name": "Client 13"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Civic Engage Pro",
+      "dueDate": "2020-02-22",
+      "lastModified": "2020-01-30",
+      "client" : {
+        "id": 14,
+        "name": "Client 14"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Future Communities",
+      "dueDate": "2020-03-15",
+      "lastModified": "2020-02-20",
+      "client" : {
+        "id": 15,
+        "name": "Client 15"
+      },
+      "role": "Owner",
+      "status": "Inactive",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Bio Health Catalyst",
+      "dueDate": "2020-04-05",
+      "lastModified": "2020-03-10",
+      "client" : {
+        "id": 16,
+        "name": "Client 16"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Intelligent Logistics",
+      "dueDate": "2020-05-18",
+      "lastModified": "2020-04-25",
+      "client" : {
+        "id": 17,
+        "name": "Client 17"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Augmented Reality Craft",
+      "dueDate": "2020-06-10",
+      "lastModified": "2020-05-15",
+      "client" : {
+        "id": 18,
+        "name": "Client 18"
+      },
+      "role": "Owner",
+      "status": "Inactive",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Safe Harbor Cyber",
+      "dueDate": "2020-07-22",
+      "lastModified": "2020-06-30",
+      "client" : {
+        "id": 19,
+        "name": "Client 19"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Social Impact Forge",
+      "dueDate": "2020-08-15",
+      "lastModified": "2020-07-20",
+      "client" : {
+        "id": 20,
+        "name": "Client 20"
+      },
+      "role": "Owner",
+      "status": "Active",
+      "stage" : {
+        "name": "Archived"
+      }
+    }
+  ]
+}

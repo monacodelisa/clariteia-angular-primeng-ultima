@@ -1,0 +1,31 @@
+.card {
+  .controls {
+    margin-bottom: 1rem;
+    p {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  th {
+    i {
+      margin-left: 0.3rem;
+    }
+  }
+
+  .p-rowgroup-header {
+    background-color: #f9fafb;
+    height: 1rem;
+    td {
+      padding: 0.3rem 1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+
