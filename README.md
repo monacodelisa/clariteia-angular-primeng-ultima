@@ -12,6 +12,8 @@ read more [HERE](./linkedin-post/Linkedin-post.md)
  
 ## Working on an app without being provided endpoints
 
+### If I hadn't been constrained to using only the Ultima template components, my approach to this project would have been fundamentally different, diverging from the strategies I've employed in my previous projects.
+
 ## Deliverables provided - coded from scratch
 - Projects module matching a figma design integrated using Ultima Template 
   - list of projects - view involving serious customizations to match the provided Figma design since it includes elements not natively supported by PrimeNG or by Ultima template
