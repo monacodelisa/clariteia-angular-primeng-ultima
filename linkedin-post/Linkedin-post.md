@@ -10,8 +10,10 @@ I pretty much ended the contract because of him. I said that I am happy to find 
 
 After I ended the contract with them, they requested a full refund for absolutely everything, spewed many lies including saying that I refused to handover the project and much more. So at this point I am assuming that this was their intention all along - to just find a reason to not pay and get some work done for free.
 
-I actually went out of my way to get them a good replacement, was honest with them instead of bsing for months - which we know some developers do. They first took the recommendations I provided and then requested the refund. As if that was not enough - they decided to leave me a horrible review full of lies, and they used the bad review to blackmail me into giving them the refund.
+I actually went out of my way to get them a good replacement, was honest with them instead of BSing for months - which we know some developers do. They first took the recommendations I provided and then requested the refund. As if that was not enough - they decided to leave me a horrible review full of lies, and they used the bad review to blackmail me into giving them the refund.
 
 But that was yesterday, today is a bright new day, so what's up on the internet... Oh yea here is - DEVIN 🤦
 
 #webdevelopment #upwork #freelance #softwareengineering #devinai
+
+![Image](./blackmail-upwork.jpg)

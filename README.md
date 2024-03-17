@@ -2,8 +2,8 @@
 
 # [VIEW LIVE](https://clariteia-angular-primeng.vercel.app/project/list)
 
-## 🚫 Client to be avoided
-read more [HERE](https://www.paidlancer.dev/avoid-list)
+### Client to be avoided
+read more [HERE](./linkedin-post/Linkedin-post.md)
 
 ## Tech:
 - Angular v17
