@@ -1,9 +1,8 @@
 # Angular SPA FrpFront - Clariteia 
 
-# [VIEW LIVE](https://clariteia-angular-primeng.vercel.app/project/list)
+# [VIEW LIVE](rfp-platform-primeng-ultima.monacodelisa.com)
 
 ### Client to be avoided
-read more [HERE](./linkedin-post/Linkedin-post.md)
 
 ## Tech:
 - Angular v17
